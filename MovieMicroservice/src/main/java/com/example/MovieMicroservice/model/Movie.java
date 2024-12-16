@@ -8,7 +8,7 @@ public class Movie {
 	
 	@Id
 	@generatedvalue
-	private Long id;
+	private Long id;a
 
 	
 	
