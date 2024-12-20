@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>userservice</artifactId>
+	<artifactId>filmservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>userservice</name>
+	<name>filmservice</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -43,14 +43,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		
-		 <dependency> 
-		        <groupId>javax.servlet</groupId> 
-		        <artifactId>javax.servlet-api</artifactId> 
-		        <version>4.0.1</version> 
-		        <scope>provided</scope> 
-    	</dependency>
-    
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -71,11 +63,6 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.example</groupId>
-			<artifactId>gatewayservice</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

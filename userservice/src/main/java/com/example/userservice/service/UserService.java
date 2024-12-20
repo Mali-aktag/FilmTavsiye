@@ -11,15 +11,27 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-
+    
+    
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     public User saveUser(User user) {
         if (user.getRole() == null || user.getRole().isEmpty()) {
-            user.setRole("ROLE_USER"); // Varsayılan olarak ROLE_USER atanır
+            user.setRole("ROLE_USER");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
+    }
+
+    public User updateUser(Long id, User updatedUser) {
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Kullanıcı bulunamadı."));
+        existingUser.setUsername(updatedUser.getUsername());
+        if (updatedUser.getPassword() != null) {
+            existingUser.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
+        }
+        existingUser.setRole(updatedUser.getRole());
+        return userRepository.save(existingUser);
     }
 }

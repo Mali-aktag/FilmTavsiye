@@ -12,10 +12,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> csrf.disable()) // Yeni Spring 6.1 uyumlu yöntem
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/auth/**").permitAll() // Kayıt ve giriş açık
+                        .requestMatchers("/admin/**").hasRole("ADMIN") // Sadece admin erişebilir
+                        .anyRequest().authenticated() // Diğer her şey oturum açmış kullanıcıya açık
                 )
                 .build();
     }
