@@ -1,9 +1,9 @@
-package com.example.userservice.model;
+package com.example.usermicroservice.model;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "app_user")
 public class User {
 
     @Id
@@ -16,10 +16,19 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    private String role = "ROLE_USER"; // Varsayılan değer ROLE_USER
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    // Getter ve Setter metotları
+    public User() {
+    }
+
+    public User(Long id, String username, String password, Role role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
     public Long getId() {
         return id;
     }
@@ -44,11 +53,11 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 }
