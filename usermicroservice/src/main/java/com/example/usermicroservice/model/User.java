@@ -1,34 +1,26 @@
 package com.example.usermicroservice.model;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-@Entity
-@Table(name = "app_user")
+@Table("users") // Tablo adı
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column("ID") // Veritabanındaki sütun adı ile tam eşleşme
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column("USERNAME") // Sütun adı
     private String username;
 
-    @Column(nullable = false)
+    @Column("PASSWORD") // Sütun adı
     private String password;
 
-    @Enumerated(EnumType.STRING)
+    @Column("ROLE") // Sütun adı
     private Role role;
 
-    public User() {
-    }
-
-    public User(Long id, String username, String password, Role role) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
-
+    // Getter ve Setter
     public Long getId() {
         return id;
     }

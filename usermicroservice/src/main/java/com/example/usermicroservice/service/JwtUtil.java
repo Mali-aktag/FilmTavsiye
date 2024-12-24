@@ -1,4 +1,4 @@
-package com.example.usermicroservice.util;
+package com.example.usermicroservice.service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -12,7 +12,7 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private final String secret = "my-secret-key-my-secret-key-my-secret-key"; // En az 256 bit
+    private final String secret = "bXktc2VjcmV0LWtleS1teS1zZWNyZXQta2V5LW15LXNlY3JldC1rZXk="; // Base64 formatında secret key
     private final long expiration = 3600000; // 1 saat
 
     private SecretKey getSignInKey() {
@@ -36,13 +36,5 @@ public class JwtUtil {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
-    }
-
-    public String extractUsername(String token) {
-        return validateToken(token).getSubject();
-    }
-
-    public String extractRole(String token) {
-        return (String) validateToken(token).get("role");
     }
 }
